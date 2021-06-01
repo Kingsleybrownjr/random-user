@@ -1,11 +1,9 @@
-const main = document.querySelector('#main');
-
 let data = [];
 
 // fetch random user and add money
 const getRandomUser = async () => {
 	const res = await fetch('https://randomuser.me/api');
-	
+
 	const data = await res.json();
 	const user = data.results[0];
 
@@ -22,10 +20,11 @@ const getRandomUser = async () => {
 const addData = userInfo => {
 	data.push(userInfo);
 	updateDOM();
-    
 };
 
 const updateDOM = (providedData = data) => {
+	const main = document.querySelector('#main');
+
 	// clear the main div
 	main.innerHTML = `<h2><strong>Person</strong> Wealth</h2>`;
 
@@ -42,8 +41,12 @@ const updateDOM = (providedData = data) => {
 
 const getData = () => data;
 
+const updateData = newData => {
+	data = newData;
+};
+
 //Format number as money
 const formatToMoney = number =>
 	number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
-export { getRandomUser, getData, updateDOM };
+export { getRandomUser, getData, updateDOM, updateData, formatToMoney };
