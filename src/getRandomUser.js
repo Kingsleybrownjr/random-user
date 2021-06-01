@@ -6,7 +6,6 @@ const getRandomUser = async () => {
 
 	const data = await res.json();
 	const user = data.results[0];
-
 	const { first, last } = user.name;
 
 	const newUser = {
@@ -41,6 +40,7 @@ const updateDOM = (providedData = data) => {
 
 const getData = () => data;
 
+// update the data array with changes
 const updateData = newData => {
 	data = newData;
 };

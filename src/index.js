@@ -5,7 +5,6 @@ import { showMillionaires } from './showMillionaires';
 import { calculateWealth } from './calculateWealth';
 
 const addUserBtn = document.querySelector('#add_user');
-getRandomUser();
 const doubleMoneyBtn = document.querySelector('#double');
 const showMillionaireBtn = document.querySelector('#show_millionaires');
 const sortBtn = document.querySelector('#sort');
