@@ -1,0 +1,53 @@
+const main = document.querySelector('#main');
+const addUserBtn = document.querySelector('#add_user');
+const doubleMoneyBtn = document.querySelector('#double');
+const showMillionaireBtn = document.querySelector('#show_millionaires');
+const sortBtn = document.querySelector('#sort');
+const calculateWealthBtn = document.querySelector('#calculate_wealth');
+
+let data = [];
+
+// fetch random user and add money
+const getRandomUser = async () => {
+	const res = await fetch('https://randomuser.me/api');
+
+	const data = await res.json();
+	const user = data.results[0];
+
+	const { first, last } = user.name;
+
+	const newUser = {
+		name: `${first} ${last}`,
+		money: Math.floor(Math.random() * 1_000_000),
+	};
+	addData(newUser);
+};
+
+const addData = userInfo => {
+	data.push(userInfo);
+	updateDOM();
+};
+
+const updateDOM = (providedData = data) => {
+	// clear the main div
+	main.innerHTML = `<h2><strong>Person</strong> Wealth</h2>`;
+
+	providedData.forEach(data => {
+		const div = document.createElement('div');
+		div.classList.add('person');
+
+		div.innerHTML = `
+            <strong>${data.name}</strong> $${formatToMoney(data.money)}
+        `;
+
+		main.appendChild(div);
+	});
+};
+
+//Format number as money
+const formatToMoney = number =>
+	number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+getRandomUser();
+
+addUserBtn.addEventListener('click', getRandomUser);
