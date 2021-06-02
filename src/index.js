@@ -3,6 +3,9 @@ import { getRandomUser } from './getRandomUser';
 import { sortByRichest } from './sortByRiches';
 import { showMillionaires } from './showMillionaires';
 import { calculateWealth } from './calculateWealth';
+import { renderPage } from './views';
+
+renderPage();
 
 const addUserBtn = document.querySelector('#add_user');
 const doubleMoneyBtn = document.querySelector('#double');
