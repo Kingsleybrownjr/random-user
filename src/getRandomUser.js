@@ -3,7 +3,6 @@ let data = [];
 // fetch random user and add money
 const getRandomUser = async () => {
 	const res = await fetch('https://randomuser.me/api');
-
 	const data = await res.json();
 	const user = data.results[0];
 	const { first, last } = user.name;
@@ -46,7 +45,8 @@ const updateData = newData => {
 };
 
 //Format number as money
-const formatToMoney = number =>
+const formatToMoney = number => (
 	number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+);
 
 export { getRandomUser, getData, updateDOM, updateData, formatToMoney };

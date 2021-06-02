@@ -2,9 +2,7 @@ import { getData, formatToMoney } from './getRandomUser';
 
 const calculateWealth = () => {
 	const main = document.querySelector('#main');
-
-	let data = getData();
-
+	const data = getData();
 	const wealth = data.reduce((acc, data) => (acc += data.money), 0);
 
 	const wealthEl = document.createElement('div');
